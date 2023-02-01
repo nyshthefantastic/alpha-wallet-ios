@@ -646,6 +646,8 @@
 		8787601129349ED7005CBC5F /* TransactionSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8787601029349ED7005CBC5F /* TransactionSectionHeaderView.swift */; };
 		87897B9C25EF7C08006E3C75 /* ShowSeedPhraseIntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87897B9B25EF7C08006E3C75 /* ShowSeedPhraseIntroductionViewController.swift */; };
 		87897B9E25EF7C50006E3C75 /* ShowSeedPhraseIntroductionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87897B9D25EF7C50006E3C75 /* ShowSeedPhraseIntroductionViewModel.swift */; };
+		878D255A298A6FD200C0CF5E /* AVPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878D2559298A6FD200C0CF5E /* AVPlayerView.swift */; };
+		878D255C298A701300C0CF5E /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878D255B298A701300C0CF5E /* ImageLoader.swift */; };
 		878EE8EE255ADA49000210DE /* ShareContextHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878EE8ED255ADA49000210DE /* ShareContextHandler.swift */; };
 		878EE8F5255ADA49000210DE /* AlphaWalletShare.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 878EE8EB255ADA49000210DE /* AlphaWalletShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		878EE941255BBF9B000210DE /* ItemProviderValueResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878EE940255BBF9B000210DE /* ItemProviderValueResolver.swift */; };
@@ -1523,6 +1525,8 @@
 		8787601029349ED7005CBC5F /* TransactionSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionSectionHeaderView.swift; sourceTree = "<group>"; };
 		87897B9B25EF7C08006E3C75 /* ShowSeedPhraseIntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSeedPhraseIntroductionViewController.swift; sourceTree = "<group>"; };
 		87897B9D25EF7C50006E3C75 /* ShowSeedPhraseIntroductionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSeedPhraseIntroductionViewModel.swift; sourceTree = "<group>"; };
+		878D2559298A6FD200C0CF5E /* AVPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerView.swift; sourceTree = "<group>"; };
+		878D255B298A701300C0CF5E /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		878EE8EB255ADA49000210DE /* AlphaWalletShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AlphaWalletShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		878EE8ED255ADA49000210DE /* ShareContextHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareContextHandler.swift; sourceTree = "<group>"; };
 		878EE8F2255ADA49000210DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -2939,6 +2943,7 @@
 				87281AEF288521CB0066E31E /* DummySearchView.swift */,
 				874B7DB32910F203000E1A57 /* RoundedEnsView.swift */,
 				87D3121E2925282100F0B108 /* LabeledServerImageView.swift */,
+				878D2559298A6FD200C0CF5E /* AVPlayerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -4102,6 +4107,7 @@
 				874ED68F27DB48FE001AB374 /* DappRequestHandler.swift */,
 				87FBF2B428056B6F00616B7D /* FirebaseReportService.swift */,
 				87D175EC24AF1565002130D2 /* KeyboardChecker.swift */,
+				878D255B298A701300C0CF5E /* ImageLoader.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -5055,6 +5061,7 @@
 				874ED67727D79666001AB374 /* WalletPupupViewModel.swift in Sources */,
 				87BBF9982563DD7600FF4846 /* TransactionConfirmationCoordinatorBridgeToPromise.swift in Sources */,
 				29DBF2A71F9F145900327C60 /* StateViewModel.swift in Sources */,
+				878D255A298A6FD200C0CF5E /* AVPlayerView.swift in Sources */,
 				87713EB4264BAB5A00B1B9CB /* ActivityPageView.swift in Sources */,
 				8717DA3D273AB19E002D3D66 /* WalletConnectRequestConverter.swift in Sources */,
 				87FBF2B528056B6F00616B7D /* FirebaseReportService.swift in Sources */,
@@ -5385,6 +5392,7 @@
 				025DE32428A1FBEA00CBD665 /* UIImageAsset+Extension.swift in Sources */,
 				C601B18D24407F4300C763D9 /* SettingTableViewCellViewModel.swift in Sources */,
 				87741F1827709073007F4604 /* TestnetTokenInfoView.swift in Sources */,
+				878D255C298A701300C0CF5E /* ImageLoader.swift in Sources */,
 				87D1757A24ADAF07002130D2 /* BlockchainTagLabelViewModel.swift in Sources */,
 				87300E892851C9D8009DE4B3 /* AcceptWalletConnectSessionViewModel.swift in Sources */,
 				875CA90928BF2B720020FA48 /* LocalNotificationService.swift in Sources */,
