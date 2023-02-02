@@ -83,6 +83,7 @@ final class ImageLoader {
     private let cache: ImageCacheStore
     private let decoder: ImageDecoder
     private let interceptor: ImageLoaderResponseInterceptor
+    private let base64Decoder = Base64Decoder()
 
     init(publishers: [URLRequest: LoadContentPublisher] = [:],
          session: URLSession,
@@ -97,9 +98,16 @@ final class ImageLoader {
         self.session = session
     }
 
+    //NOTE: we receive can receive base64 as url, so we need to decode it first and return right data
+    //treat value from base64 as string to display in webview, might be needed to handle special mime types
+    //or maybe its better to handle decoding base64 when return image for token, make special manager for it, not just static func like it is for now
     public func fetch(_ url: URL) -> LoadContentPublisher {
-        let request = URLRequest(url: url)
-        return fetch(request)
+        if let data = base64Decoder.decode(string: url.absoluteString), data.mimeType != nil, let string = String(data: data.data, encoding: .utf8) {
+            return .just(.done(.svg(string))).prepend(.loading).eraseToAnyPublisher()
+        } else {
+            let request = URLRequest(url: url)
+            return fetch(request)
+        }
     }
 
     public func fetch(_ urlRequest: URLRequest) -> LoadContentPublisher {
@@ -135,8 +143,8 @@ final class ImageLoader {
                         .mapError { ImageLoaderError.internal($0) }
                         .flatMap { response -> LoadContentPublisher in
                             do {
-                                guard let resp = response.response as? HTTPURLResponse else { throw ImageLoaderError.invalidData }
-                                let value = try decoder.decode(response: resp, data: response.data) as! ImageDecoder.Response
+                                guard let httpResponse = response.response as? HTTPURLResponse else { throw ImageLoaderError.invalidData }
+                                let value = try decoder.decode(response: httpResponse, data: response.data) as! ImageDecoder.Response
                                 try cache.set(data: value.data, for: ImageCacheKey.cacheKey(for: url, prefix: .raw))
 
                                 return interceptor.intercept(response: value.image)
@@ -144,6 +152,7 @@ final class ImageLoader {
                                 return .fail(ImageLoaderError.invalidData)
                             }
                         }.share()
+                        .handleEvents(receiveCompletion: { _ in self?.publishers[urlRequest] = nil })
                         .receive(on: RunLoop.main)
                         .eraseToAnyPublisher()
 
@@ -181,7 +190,7 @@ extension ImageLoader {
         let url: URL
     }
 
-    class ImageDecoder: AnyDecoder {
+    struct ImageDecoder: AnyDecoder {
         typealias Response = (data: Data, image: ImageOrSvg)
         var contentType: String? { return nil }
 

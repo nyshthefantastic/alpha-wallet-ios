@@ -165,7 +165,8 @@ final class WebImageView: UIView, ContentBackgroundSupportable {
                 case .cancel:
                     return .just((viewState: ViewState.noContent, url: emptyUrl))
                 }
-            }.sink { [weak self] in self?.reload(viewState: $0.viewState, for: $0.url) }
+            }.print("xxx.viewState")
+            .sink { [weak self] in self?.reload(viewState: $0.viewState, for: $0.url) }
             .store(in: &cancellable)
     }
     

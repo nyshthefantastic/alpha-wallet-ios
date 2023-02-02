@@ -234,7 +234,7 @@ public class TokenBalanceFetcher: TokenBalanceFetcherType {
             .flatMap { [jsonFromTokenUri] tokenIds -> AnyPublisher<[NonFungibleBalanceAndItsSource<JsonString>], Never> in
                 let guarantees = tokenIds.map { eachTokenId in
                     let enjinToken = enjinTokens[TokenIdConverter.toTokenIdSubstituted(string: eachTokenId)]
-                    return jsonFromTokenUri.fetchJsonFromTokenUri(forTokenId: eachTokenId, tokenType: .erc721, address: contract, enjinToken: enjinToken).mapToResult()
+                    return jsonFromTokenUri.fetchJsonFromTokenUri(for: eachTokenId, tokenType: .erc721, address: contract, enjinToken: enjinToken).mapToResult()
                 }
 
                 return Publishers.MergeMany(guarantees).collect()
